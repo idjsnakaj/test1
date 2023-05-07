@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2021 at 05:13 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: May 07, 2023 at 09:07 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-
+INSERT INTO `admin` (`personid`, `salary`) VALUES
+(7, 0);
 
 -- --------------------------------------------------------
 
@@ -56,6 +57,8 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
+INSERT INTO `cart` (`personid`, `productid`, `quantity`, `cost`, `deliveryid`) VALUES
+(8, 3, 1, 500, 6);
 
 -- --------------------------------------------------------
 
@@ -72,7 +75,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-
+INSERT INTO `customer` (`personid`, `paymentPreference`) VALUES
+(8, 'aaaaa');
 
 -- --------------------------------------------------------
 
@@ -92,6 +96,8 @@ CREATE TABLE `delivery` (
 -- Dumping data for table `delivery`
 --
 
+INSERT INTO `delivery` (`deliveryid`, `personid`, `deliveryStatus`, `deliveryDate`, `totalCost`) VALUES
+(6, 8, 'Order Placed', '2023-05-07', 500);
 
 -- --------------------------------------------------------
 
@@ -115,6 +121,9 @@ CREATE TABLE `persons` (
 -- Dumping data for table `persons`
 --
 
+INSERT INTO `persons` (`personid`, `fname`, `lname`, `accesslevel`, `accountpassword`, `dob`, `phoneno`, `email`, `address`) VALUES
+(7, 'Demo', 'Admin', 'admin', 'honey328', '2002-12-05', 1111111111, 'admin@gmail.com', 'NA'),
+(8, 'Han Kai', 'Lim', 'customer', '#oL328Lo#', '2023-04-30', 1111111111, 'arhkaii789@gmail.com', 'NA');
 
 -- --------------------------------------------------------
 
@@ -136,20 +145,13 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`productID`,`productName`,`productPrice`,`productStock`,`productDescription`,`productCap`,`productPhoto`)
-VALUES (1, "MacBook Air M1", 100000,300,"Latest MacBook Air running on apple silicon M1 chip",5,"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1603332211000");
+INSERT INTO `product` (`productID`, `productName`, `productPrice`, `productStock`, `productDescription`, `productCap`, `productPhoto`) VALUES
+(1, 'MacBook Air M1', 100000, 300, 'Latest MacBook Air running on apple silicon M1 chip', 5, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1603332211000'),
+(2, 'Iphone 13', 120000, 200, 'Iphone 13, 256gb storage', 3, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000'),
+(3, 'Fart Spray', 500, 99, 'Play fart pranks for fun', 1, 'https://m.media-amazon.com/images/I/71jwVGVj+WL._SL1500_.jpg'),
+(4, 'Himalayan Fresh Air', 1000, 100, 'Fresh air packed from the himalayan mountains, can be used after the fart spray', 1, 'https://m.media-amazon.com/images/I/61ORV-YEj1L._SL1500_.jpg'),
+(5, 'Amazon Basics 4K LED TV', 25000, 250, '4K Ultra HD Smart LED Fire TV', 1, 'https://m.media-amazon.com/images/I/71AqQyCMmeL._SL1240_.jpg');
 
-INSERT INTO `product` (`productID`,`productName`,`productPrice`,`productStock`,`productDescription`,`productCap`,`productPhoto`)
-VALUES (2,"Iphone 13",120000,200,"Iphone 13, 256gb storage",3,"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000");
-
-INSERT INTO `product` (`productID`,`productName`,`productPrice`,`productStock`,`productDescription`,`productCap`,`productPhoto`)
-VALUES (3,"Fart Spray",500,100,"Play fart pranks for fun",1,"https://m.media-amazon.com/images/I/71jwVGVj+WL._SL1500_.jpg");
-
-INSERT INTO `product` (`productID`,`productName`,`productPrice`,`productStock`,`productDescription`,`productCap`,`productPhoto`)
-VALUES (4,"Himalayan Fresh Air",1000,100,"Fresh air packed from the himalayan mountains, can be used after the fart spray",1,"https://m.media-amazon.com/images/I/61ORV-YEj1L._SL1500_.jpg");
-
-INSERT INTO `product` (`productID`,`productName`,`productPrice`,`productStock`,`productDescription`,`productCap`,`productPhoto`)
-VALUES (5,"Amazon Basics 4K LED TV",25000,250,"4K Ultra HD Smart LED Fire TV",1,"https://m.media-amazon.com/images/I/71AqQyCMmeL._SL1240_.jpg");
 --
 -- Indexes for dumped tables
 --
@@ -199,13 +201,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `deliveryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `deliveryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `persons`
 --
 ALTER TABLE `persons`
-  MODIFY `personid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `personid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
